@@ -78,25 +78,35 @@ def add_gemeenten_layer(m, vlaanderen_gemeenten, vervaging = 1, gemeenten_risico
     return m
 
 
-def highlight_selected_gemeente(m, vlaanderen_gemeenten, geselecteerde_gemeente):
-    for _, row in vlaanderen_gemeenten.iterrows():
-        color = 'rgb(78, 146, 72)' #groen
-        if row['NAAM'] == geselecteerde_gemeente:
-            color = 'rgb(19, 57, 128)'
-        elif row['RISICO'] > 2000:
-            color = 'rgb(210, 50, 47)' #rood
-        elif row['RISICO'] > 1000:
-            color = 'rgb(222, 104, 55)' #oranje
-    
+def highlight_selected_gemeente(m, vlaanderen_gemeenten, geselecteerde_gemeente, gemeenten_risicos=None):
+    if gemeenten_risicos  is not None: 
+        vlaanderen_gemeenten = vlaanderen_gemeenten.merge(gemeenten_risicos, on='NAAM', how='left')
 
+    for _, row in vlaanderen_gemeenten.iterrows():
+        if gemeenten_risicos is not None:
+            color = 'rgb(78, 146, 72)' #groen
+            if row['RISICO'] > 2000:
+                color = 'rgb(210, 50, 47)' #rood
+            elif row['RISICO'] > 1000:
+                color = 'rgb(222, 104, 55)' #oranje
+        else:
+            color = 'rgb(200, 200, 200)'  # neutral gray if no risk data
+            
+
+        color = 'rgb(19, 57, 128)' if row['NAAM'] == geselecteerde_gemeente else color
         # Gemeentes toevoegen
         geojson_geometry = row['geometry'].__geo_interface__
+        popup_text = f"Gemeente: {row['NAAM']}"
+        if gemeenten_risicos is not None:
+            popup_text += f"<br>Risico: {row['RISICO']}"
+
         folium.GeoJson(
             geojson_geometry,
             style_function=lambda x, color=color: {
-                'color': 'black', 'weight': 1, 'fillColor': color, 'fillOpacity': 1
+                'color': 'black', 'weight': 2 if row['NAAM'] == geselecteerde_gemeente else 1, 
+                'fillColor': color, 'fillOpacity': 0.8
             },
-            popup=folium.Popup(f"Gemeente: {row['NAAM']}<br>Risico: {row['RISICO']}", max_width=300),
+            popup=folium.Popup(popup_text, max_width=300),
         ).add_to(m)
     return m
 

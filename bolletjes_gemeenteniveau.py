@@ -18,7 +18,7 @@ def voeg_bolletje_toe_intern(kaart, latitude, longitude, straatnaam, kleur='blac
     )
     bolletje.add_to(kaart)
 
-def voeg_bolletje_toe(kaart,gemeente):
+def voeg_bolletje_toe(kaart,gemeente, geselecteerde_straat=None):
     data = {}
     csv_bestand = f"s_coordinaten_{gemeente}.csv"
     with open(csv_bestand, mode="r") as csv_file:
@@ -38,13 +38,16 @@ def voeg_bolletje_toe(kaart,gemeente):
     kleuren = ["green","yellow","red"]
     for straat,coords in data.items():
         if len(coords) == 2:
-            a = kleuren[random.randint(0,2)]
-            if a == "green":
-                voeg_bolletje_toe_intern(g, coords[0], coords[1], straat, kleur=a)
-            if a == "yellow":
-                voeg_bolletje_toe_intern(y, coords[0], coords[1], straat, kleur=a)
-            if a == "red":
-                voeg_bolletje_toe_intern(r, coords[0], coords[1], straat, kleur=a)
+            if straat == geselecteerde_straat:
+                voeg_bolletje_toe_intern(g, coords[0], coords[1], straat, kleur='rgb(19, 57, 128)')
+            else:
+                a = kleuren[random.randint(0,2)]
+                if a == "green":
+                    voeg_bolletje_toe_intern(g, coords[0], coords[1], straat, kleur=a)
+                if a == "yellow":
+                    voeg_bolletje_toe_intern(y, coords[0], coords[1], straat, kleur=a)
+                if a == "red":
+                    voeg_bolletje_toe_intern(r, coords[0], coords[1], straat, kleur=a)
     # Opslaan van de kaart als een HTML-bestand
     g.add_to(kaart)
     y.add_to(kaart)

@@ -108,7 +108,7 @@
                             <h3>Zoek een straat:</h3>
                             <input type="text" id="straat-input" placeholder="Typ hier de straatnaam..." list="straat-suggesties">
                             <datalist id="straat-suggesties"></datalist>
-                            <button onclick="ShowStraat()">Klik hier na kiezen.</button>
+                            <button onclick="ShowStraat()" data-gemeente="{{ gemeente }}">Klik hier na kiezen.</button>
                         </div>
                 </div>
             </div>
@@ -167,15 +167,14 @@
         }
         function ShowStraat() {
             const straat = document.getElementById('straat-input').value;
+            const gemeente = document.querySelector('[onclick="ShowStraat()"]').dataset.gemeente;
+            
 
             if (straat) {
-                fetch(`/?action=select_straat&straat=${encodeURIComponent(straat)}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('grote_gemeentekaart').innerHTML = data.gemeente_html;
-                        console.log(`Kaart geüpdatet voor straat: ${straat}`);
-                    })
-                    .catch(error => console.error('Error:', error));
+                // Update de iframe direct met de nieuwe URL
+                document.querySelector('#grote_gemeentekaart iframe').src = 
+                    `/gemeente/${gemeente}?straat=${encodeURIComponent(straat)}`;
+                console.log(`Kaart geüpdatet voor straat: ${straat}`);
             } else {
                 alert("Vul een straatnaam in.");
             }
