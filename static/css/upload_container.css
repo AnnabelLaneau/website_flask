@@ -1,0 +1,38 @@
+.upload-container {
+    margin-top: 20px;
+    border: 5px solid;
+    border-color: var(--oranje);
+    background-color: var(--licht_blauw);
+    display: flex;
+    align-items: center;
+}
+.upload-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-container label {
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--licht_blauw);
+    margin-bottom: 8px;
+    margin-bottom: 0px;
+}
+
+.upload-container input[type="file"] {
+    display: block;
+}
+
+.form {
+    width: 80%;
+}
+
+.upload-container button {
+    background-color: var(--oranje);
+    width: 20%;
+    border: none;
+    padding: 0;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    }
+

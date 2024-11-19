@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlaanderen Overstromingsrisico/home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kaart_gemeente.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/algemeen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kaart_legende.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload_container.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    </style>
+</head>
+<body>
+    <nav class="NavigationBar">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='afbeeldingen/drup-logo.png') }}" alt="Logo">
+        </a>
+
+        <!-- Navigatielinks -->
+        <div class="paginas">
+            <a class="active" class="pagina" href="{{ url_for('home') }}">Home</a>
+            <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen?</a>
+            <a class="pagina" href="{{ url_for('about') }}">About</a>
+
+        </div>
+    </nav>
+
+    <div class = 'inhoud'>
+        <div id="kaart-legende">
+            <div id="kaart-met-knoppen">
+                <div id="kaart">
+                    <iframe src="{{ url_for('static', filename='kaarten/kaart_vlaanderen.html') }}" id='iframe' class="gerond"></iframe>
+                </div>
+                <div class="button-container" >
+                    <button class="gerond" onclick="loadRainfall('rainfall1')"><h3>Neerslag 1</h3></button>
+                    <button class="gerond" onclick="loadRainfall('rainfall2')"><h3>Neerslag 2</h3></button>
+                    <button class="gerond" onclick="loadRainfall('rainfall3')"><h3>Neerslag 3</h3></button>
+                </div>
+            </div>
+
+            <div id="info" class="gerond">
+                <div class='tekst' class="legende">
+
+                    <h3>Legende</h2>
+                    <a href="{{ url_for('maatregelingen') }}" class="legende-regel" >
+                        <div class="vierkant groen"></div>
+                        <p>Laag riscico</p>
+                    </a>
+                    <a href="{{ url_for('maatregelingen') }}" class="legende-regel">
+                        <div class="vierkant oranje"></div>
+                        <p>Gemiddeld riscico</p>
+                    </a>
+                    <a href="{{ url_for('maatregelingen') }}" class="legende-regel">
+                        <div class="vierkant rood"></div>
+                        <p>Hoog riscico</p>
+                    </a>
+
+                </div>
+                <div class='tekst gemeente-select'>
+                    <h3>Selecteer een gemeente:</h3>
+                    <select id="gemeente-select" onchange="showGemeenteMap(this.value)">
+                        <option value="" selected disabled>Selecteer een gemeente.</option>
+                        {% for gemeente, geometrie in vlaanderen_gemeenten %}
+                            <option value="{{ gemeente }}">{{ gemeente }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class='tekst' id="extra-info" id="scrollButton">
+                    <p>Voor meer gedetailleerde informatie per gemeente gelieve een gemeente te selecteren hierboven.</p>
+                </div>
+                <button id="scrollButton" class="gerond">Klik voor een grotere kaart.</button>
+            </div>
+        </div>
+        <div class="upload-container gerond">
+            <div class="form tekst">
+                <form id="uploadForm" enctype="multipart/form-data" method="POST"> 
+                <!-- form: gebruikers gegevens naar server kunnen sturen, enctype="multipart/form-data": gegevens bevatten niet enkel tekst, maar ook bestanden, method="POST": gegevens verzenden <=> GET: gegevens krijgen  -->
+                    <label for="rainfile"><h3>Upload je eigen regendata.</h3></label>
+                    <input type="file" name="rainfile" id="rainfile" webkitdirectory multiple>
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+            <button class="gerond tekst" onclick="loadRainfall('rainfallupload')"><h3>Geuploade neerslag</h3></button>
+        </div>
+        <div class="gemeente_info gerond" >
+            <h3 class="tekst">Gedetailleerde kaart</h3>
+            <div class="inhoud_gemeente tekst">
+                <div id="grote_gemeentekaart">
+                    <p>Selecteer bovenaan een gemeente. </p>
+                </div>
+                <div class="info2">
+                    <h3>Legende</h2>
+                        <div class="legende-regel" >
+                            <div class="vierkant groen"></div>
+                            <p>Laag riscico</p>
+                        </div>
+                        <div class="legende-regel">
+                            <div class="vierkant oranje"></div>
+                            <p>Gemiddeld riscico</p>
+                        </div>
+                        <div class="legende-regel">
+                            <div class="vierkant rood"></div>
+                            <p>Hoog riscico</p>
+                        </div>
+                        <div class="straat_select">
+                            <h3>Zoek een straat:</h3>
+                            <input type="text" id="straat-input" placeholder="Typ hier de straatnaam..." list="straat-suggesties">
+                            <datalist id="straat-suggesties"></datalist>
+                            <button onclick="ShowStraat()">Klik hier na kiezen.</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 DRUP. Alle rechten voorbehouden.</p>
+        <div class="footer-inhoud">
+            <div><p>Contact: <a href="mailto:bwk1a2po3@gmail.com">bwk1a2po3@gmail.com</a></p></div>
+            <div>
+            <p> <a class="active" class="pagina" href="{{ url_for('home') }}">Home</a>
+                <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen?</a>
+                <a class="pagina" href="{{ url_for('about') }}">About</a> </p>     
+            </div> 
+        </div>
+    </footer>
+    
+
+    <script>
+        //const vlaanderengemeenten = {{ vlaanderen_gemeenten|tojson }}; 
+        let straten_lijst = [];
+    
+        function showGemeenteMap(gemeente) {
+            document.getElementById('extra-info').innerHTML = '';
+            document.getElementById('grote_gemeentekaart').innerHTML = '';
+            
+            if (gemeente) {
+                fetch(`/?action=select_gemeente&gemeente=${encodeURIComponent(gemeente)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update de kaart met de gemeente
+                        document.getElementById('kaart').innerHTML = data.kaart_vlaanderen_html; // Update de kaart van Vlaanderen
+                        document.getElementById('extra-info').innerHTML = data.gemeente_html;
+                        document.getElementById('grote_gemeentekaart').innerHTML = data.gemeente_html;
+                        straten_lijst = data.lijst_van_straten || [];
+                        updateStraatSelect();
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                document.getElementById('extra-info').innerHTML = '<p>Voor meer gedetailleerde informatie per gemeente gelieve een gemeente te selecteren hierboven.</p>'; 
+            }
+        }
+
+        function updateStraatSelect() {
+            const datalist = document.getElementById("straat-suggesties");
+            datalist.innerHTML = ''; // Leeg de huidige suggesties
+
+            if (straten_lijst.length > 0) {
+                straten_lijst.forEach(straat => {
+                    const option = document.createElement("option");
+                    option.value = straat;
+                    datalist.appendChild(option);
+                });
+            }
+        }
+        function ShowStraat() {
+            const straat = document.getElementById('straat-input').value;
+
+            if (straat) {
+                fetch(`/?action=select_straat&straat=${encodeURIComponent(straat)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('grote_gemeentekaart').innerHTML = data.gemeente_html;
+                        console.log(`Kaart geüpdatet voor straat: ${straat}`);
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                alert("Vul een straatnaam in.");
+            }
+        }
+
+
+        function loadRainfall(action) {
+            document.getElementById('kaart').innerHTML = '';
+            fetch(`/?action=${action}`)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('kaart').innerHTML = html; // Werk de extra info bij
+                    console.log('html doorgetsuurd')
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        document.getElementById("uploadForm").onsubmit = function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("action", "upload_rainfile"); // Voeg de actie toe
+
+            const files = document.getElementById("rainfile").files;
+            for (let i = 0; i < files.length; i++) {
+                formData.append("rainfile", files[i]); // Voeg elk bestand toe aan formData
+            }
+
+            fetch("/", { 
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("kaart").innerHTML = data.kaart_vlaanderen_html;
+                console.log("Kaart geüpdatet met uploaddata");
+            })
+            .catch(error => console.error("Error:", error));
+            };
+
+        const scrollButton = document.getElementById('scrollButton');
+        const gemeenteInfo = document.getElementById('grote_gemeentekaart');
+
+        if (scrollButton && gemeenteInfo) {
+            scrollButton.addEventListener('click', () => {
+                gemeenteInfo.scrollIntoView({ behavior: 'smooth' });
+            });
+        } else {
+            console.error('De elementen zijn niet gevonden!');
+        }
+        
+        
+    </script>
+
+    
+        
+    
+</body>
+</html>
+

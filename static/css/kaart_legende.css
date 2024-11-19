@@ -1,0 +1,127 @@
+ body { 
+    margin: 0px;
+    background-color: #f3e8e1;
+    font-family: 'Lato', sans-serif;}
+ h1 {color: var(--donker_blauw);}
+ h2 {color: var(--donker_blauw);}
+ h3 {color: var(--donker_blauw)}
+ h4 {color: var(--donker_blauw)}
+ p {color: rgb(0, 0, 0);}
+ 
+ :root {
+    --oranje: rgb(222, 104, 55);
+    --grijs_blauw: rgb(88, 124, 156);
+    --donker_blauw: rgb(19, 57, 128);
+    --licht_blauw: rgb(170, 200, 225);
+    --geel: rgb(255, 224, 127);
+    --off_white:  #f4f4f4; 
+    --oranje-risico: rgb(222, 104, 55);
+    --rood-risico: rgb(210, 50, 47);
+    --groen-risico: rgb(78, 146, 72);
+
+}
+
+
+#kaart-met-knoppen{
+    flex: 1;
+    width: 70%; /* Zorg dat het iframe 70% van de containerbreedte inneemt */
+}
+
+#kaart {
+    height: 400px; /* Geef de iframe een vaste hoogte */
+    border: none; /* Verwijder iframe-randen */
+    border-radius: 15px ;
+}
+ #kaart iframe {
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+ }
+  /* Zorg ervoor dat de container genoeg breedte heeft */
+#kaart-legende {
+margin-top: 20px;
+display: flex; /* Flexbox om de elementen naast elkaar te zetten */
+align-items: flex-start; /* Elementen bovenaan uitlijnen */
+gap: 20px; /* Ruimte tussen iframe en info */
+width: 100%; /* Container neemt de volledige breedte in */
+}
+
+.inhoud {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#iframe {
+    width: 100%;
+    height: 100%;
+}
+.gemeente-select {
+    position: relative;
+}
+
+.gerond {
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Info-div met een vaste breedte */
+#info {
+    flex: 0 0 300px; /* Maak de info-div 300px breed */
+    background-color: var(--licht_blauw); 
+    height: 480px;
+    border: 5px solid;
+    border-color: var(--oranje);
+}
+.tekst {
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+}
+.legende-regel {
+    display: flex; /* Gebruik Flexbox voor het uitlijnen */
+    align-items: center; /* Verticaal centreren */
+    height: 25px;
+}
+#extra-info {
+    margin-top: 15px;
+    padding-left: 15px;
+    height: 200px
+}
+.vierkant {
+    width: 15px; /* Breedte van het vierkant */
+    height: 15px; /* Hoogte van het vierkant (moet gelijk zijn aan de breedte voor een vierkant) */
+    margin: 10px
+}
+.rood {
+    background-color: red;
+}
+.oranje {
+    background-color: rgb(203, 131, 54);
+}
+.groen {
+    background-color: rgb(10, 152, 5);
+}
+.gemeente-select{
+    margin-bottom: 10px;
+}
+
+.button-container {
+margin-top: 21px;
+display: flex;
+justify-content:flex-start;; /* Knoppen centreren in de container */
+gap: 40px; /* Ruimte tussen de knoppen */
+margin-bottom: 10px
+}
+
+.button-container button {
+    background-color: var(--oranje);
+    width: 35%;
+    border: none;
+    padding: 0
+    }
+
+
+#scrollButton {
+    margin-left: 15px;
+    border: None;
+    background-color: var(--licht_blauw);
+    box-shadow: none;
+}

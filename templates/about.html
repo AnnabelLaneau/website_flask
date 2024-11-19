@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kaart_gemeente.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/algemeen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kaart_legende.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <title>Vlaanderen Overstromingsrisico/about</title>
+</head>
+<body>
+    <nav class="NavigationBar">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='afbeeldingen/drup-logo.png') }}" alt="Logo">
+        </a>
+        <div class="paginas">
+            <a class="pagina" href="{{ url_for('home') }}">Home</a>
+            <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen? </a>
+            <a class="active" class="pagina" href="{{ url_for('about') }}">About</a>
+        </div>
+    </nav>
+    <h1 class="inhoud"> Welkom bij DROP – Datagebaseerde Regenval en Overstromings Predictie</h1>
+    <div class="inhoud ons">
+        <div class="uitleg_ons gerond tekst">
+        <p> 
+            In Vlaanderen, waar de invloed van extreme weersomstandigheden steeds groter wordt, 
+            is het cruciaal om voorbereid te zijn op de risico's van overstromingen. DROP biedt een 
+            innovatieve oplossing door gebruik te maken van geavanceerde datagestuurde modellen om regenval 
+            en de daaruit voortvloeiende overstromingen nauwkeurig te voorspellen. </p><br>  <p> Met een combinatie van 
+            historische gegevens, real-time weersinformatie en geavanceerde analysetechnieken, helpt DROP 
+            gemeenschappen en beleidsmakers bij het begrijpen van de mogelijke impact van zware regenval. 
+            Dit project streeft ernaar de veerkracht van onze regio te versterken door tijdige en
+            nauwkeurige informatie te bieden, zodat er effectieve maatregelen kunnen worden genomen 
+            om schade te minimaliseren en de veiligheid van onze inwoners te waarborgen. </p>
+            <br>
+            <p>Samen kunnen we werken aan een beter voorbereid Vlaanderen, waar we ons proactief aanpassen aan de uitdagingen van ons veranderend klimaat. </p>
+        </div>
+        <div class="fotos_ons">
+            <img src="{{ url_for('static', filename='afbeeldingen/hoofd.jpg') }}" alt="Foto 1">
+            <img src="{{ url_for('static', filename='afbeeldingen/hoofd.jpg') }}" alt="Foto 1">
+            <img src="{{ url_for('static', filename='afbeeldingen/hoofd.jpg') }}" alt="Foto 1">
+            <img src="{{ url_for('static', filename='afbeeldingen/hoofd.jpg') }}" alt="Foto 1">
+            <img src="{{ url_for('static', filename='afbeeldingen/hoofd.jpg') }}" alt="Foto 1">
+            <img src="{{ url_for('static', filename='afbeeldingen/hoofd.jpg') }}" alt="Foto 1">
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2024 DRUP. Alle rechten voorbehouden.</p>
+        <div class="footer-inhoud">
+            <div><p>Contact: <a href="mailto:bwk1a2po3@gmail.com">bwk1a2po3@gmail.com</a></p></div>
+            <div>
+            <p> <a class="active" class="pagina" href="{{ url_for('home') }}">Home</a>
+                <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen?</a>
+                <a class="pagina" href="{{ url_for('about') }}">About</a> </p>     
+            </div> 
+        </div>
+    </footer>
+</body>
+</html>

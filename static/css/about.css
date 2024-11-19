@@ -1,0 +1,24 @@
+.ons {
+    display: flex;
+    align-items: flex-start;
+}
+
+.fotos_ons {
+    margin-left: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolommen */
+    gap: 20px; /* Ruimte tussen de foto's */
+    justify-items: center; /* Centreer de foto's horizontaal */}
+    
+.fotos_ons img {
+    width: 150px;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px; /* Optioneel: afgeronde hoeken */}
+.uitleg_ons {
+    width: 60%;
+    padding-right: 20px;
+    background-color: var(--licht_blauw); 
+    border: 5px solid;
+    border-color: var(--oranje);
+}

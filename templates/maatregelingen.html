@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlaanderen Overstromingsrisico/maatregelingen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kaart_gemeente.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/algemeen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kaart_legende.css') }}">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/maatregelingen.css') }}">
+</head>
+<body>
+    <nav class="NavigationBar">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='afbeeldingen/drup-logo.png') }}" alt="Logo">
+        </a>
+        <div class="paginas">
+            <a class="pagina" href="{{ url_for('home') }}">Home</a>
+            <a class="active" class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen?</a>
+            <a class="pagina" href="{{ url_for('about') }}">About</a>
+        </div>
+    </nav>
+    <div class="inhoud">
+        <h1>Maatregelen bij Overstromingen: Wat te doen?</h1>
+        <p> Bij overstromingen is het belangrijk om goed voorbereid te zijn om zo de
+            impact ervan drastisch te verminderen. De maatregelen die je neemt, kunnen variëren afhankelijk van het 
+            risiconiveau in jouw gemeente. 
+            Hieronder vind je tips voor de verschillende risiconiveaus:
+             laag, gemiddeld en hoog overstromingsrisico.</p>
+        <div class="voor gerond tekst">
+        <h2>Voor de Overstroming: Preventieve Maatregelen</h2>
+        <p>Als er overstromingsrisico bestaat, is het belangrijk om van tevoren enkele voorzorgsmaatregelen te treffen:</p>
+
+        <h3>Groen Risico (Geen Gevaar)</h3>
+        <ul>
+            <li>Er is op dit moment geen risico op overstroming. Echter, blijf alert en volg het nieuws en houd deze website in de gaten.</li>
+            <li><strong>Preventieve tips:</strong> Zorg ervoor dat je je woning goed onderhoudt, zoals het controleren van afvoersystemen en het verwijderen van obstakels in rioleringen, zodat water in geval van hevige regen snel kan wegstromen.</li>
+        </ul>
+
+        <h3>Oranje Risico (Kleine Overstroming Mogelijk)</h3>
+        <ul>
+            <li>Er is een kans op een kleine overstroming. Dit kan leiden tot lokale wateroverlast in lage gebieden.</li>
+            <li><strong>Voorbereidingen:</strong>
+                <ul>
+                    <li><strong>Waterdichte schotten</strong> voor ramen en deuren kunnen helpen om te voorkomen dat water je huis binnendringt.</li>
+                    <li><strong>Zorg voor zandzakken</strong> of pvc-zakken die je kunt vullen met water om ze als tijdelijke barrières te gebruiken.</li>
+                    <li><strong>Verhoog meubels en apparatuur</strong> in de kelder of op de benedenverdieping om schade te voorkomen.</li>
+                    <li><strong>Controleer de afvoer</strong> van regenwater rond je huis en zorg dat er geen verstopte afvoeren zijn.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Rood Risico (Zeker Kans op Overstroming)</h3>
+        <ul>
+            <li>Er is een grote kans op overstroming. Dit kan leiden tot ernstige schade aan je woning en omgeving.</li>
+            <li><strong>Maatregelen:</strong>
+                <ul>
+                    <li><strong>Verplaats waardevolle spullen</strong> naar een hoger niveau. Dit geldt voor meubels, apparatuur en belangrijke documenten.</li>
+                    <li><strong>Sluit alle gas-, water- en elektriciteitskranen af</strong> om kortsluiting of andere gevaren te voorkomen.</li>
+                    <li><strong>Plaats waterdichte afdichtingsplanken</strong> bij deuren en kelderopeningen om inlopend water buiten te houden.</li>
+                    <li><strong>Zorg voor extra hulpmiddelen</strong> zoals waterpompen, laarzen, emmers, en noodverlichting.</li>
+                    <li><strong>Volg de evacuatie-instructies</strong> van de autoriteiten nauwkeurig en zorg dat je evacuatieplan klaar is.</li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+
+        <div class="tijdens gerond tekst">
+        <h2>Tijdens de Overstroming: Wat te doen?</h2>
+
+        <p>Tijdens een overstroming is het essentieel om snel en efficiënt te handelen om schade te beperken en je eigen veiligheid te waarborgen.</p>
+
+        <h3>Groen Risico (Geen Gevaar)</h3>
+        <ul>
+            <li>Er is geen direct gevaar van overstroming, maar blijf de waterstanden volgen via betrouwbare bronnen zoals <a href="https://www.waterinfo.be" target="_blank">www.waterinfo.be</a>.</li>
+            <li><strong>Advies:</strong> Houd je woning goed in de gaten en wees voorbereid op mogelijke veranderingen in de situatie.</li>
+        </ul>
+
+        <h3>Oranje Risico (Kleine Overstroming Mogelijk)</h3>
+        <ul>
+            <li>Er is een verhoogd risico op wateroverlast. Het is belangrijk om onmiddellijk maatregelen te nemen:</li>
+            <ul>
+                <img src="static/afbeeldingen/zandzak.webp" alt="Zandzakken voor deur" class="afbeelding-rechts"/>
+                <li><strong>Gebruik zandzakken</strong> voor extra bescherming van kelderopeningen, buitendeuren of andere kwetsbare plekken.</li>
+                <li><strong>Verhoog meubels en apparaten</strong> en haal waardevolle spullen uit de kelder of andere risicovolle gebieden.</li>
+                <li><strong>Zorg voor batterijen</strong> en een lichtbron, zoals zaklampen of LED-lampen, om te voorkomen dat je zonder stroom komt te zitten.</li>
+            </ul>
+        </ul>
+        <h3>Rood Risico (Zeker Kans op Overstroming)</h3>
+        <ul>
+            <li>Als er sprake is van een ernstige overstroming, volg dan onmiddellijk de instructies van de autoriteiten en evacueer indien nodig.</li>
+            <ul>
+                <li><strong>Evacuatie:</strong> Neem je noodpakket mee, dat kan bestaan uit water, voedsel, medicijnen, reservekleding, belangrijke documenten en een eerstehulpkit.</li>
+                <li><strong>Communicatie:</strong> Houd je telefoon opgeladen en blijf in contact met lokale hulpdiensten via het nummer 1722 voor niet-noodzakelijke brandweerinzet.</li>
+            </ul>
+        </ul>
+        </div>
+
+        <div class="na gerond tekst">
+        <h2>Na de Overstroming: Schadebeperking</h2>
+
+        <p>Na de overstroming moet je snel handelen om verdere schade aan je woning en bezittingen te beperken.</p>
+
+        <h3>Groen Risico (Geen Gevaar)</h3>
+        <ul>
+            <li>Er is geen schade te verwachten, maar blijf alert en blijf de situatie volgen, vooral in geval van regenbuien of veranderende waterstanden.</li>
+        </ul>
+
+        <h3>Oranje Risico (Kleine Overstroming Mogelijk)</h3>
+        <ul>
+            <li>Kleine schade aan eigendommen kan voorkomen, zoals waterschade aan meubels of vloeren.</li>
+            <li><strong>Wat te doen:</strong>
+                <ul>
+                    <li>Neem <strong>foto's van de schade</strong> en maak een inventaris van beschadigde voorwerpen voor je verzekeraar.</li>
+                    <li><strong>Reinig en desinfecteer</strong> beschadigde oppervlakken met bleekwater om schimmelvorming te voorkomen.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Rood Risico (Zeker Kans op Overstroming)</h3>
+        <ul>
+            <li>Grote schade aan woningen kan optreden, vooral in laaggelegen gebieden.</li>
+            <li><strong>Acties:</strong>
+                <ul>
+                    <li><strong>Neem onmiddellijk contact op met je verzekeraar</strong> om de schade te melden. Overstromingsschade wordt vaak gedekt door brandverzekeringen, zelfs als het geen erkende natuurramp is.</li>
+                    <li><strong>Reinig en desinfecteer</strong> de woning en zorg voor voldoende ventilatie om de ruimtes droog te krijgen.</li>
+                    <li><strong>Documenteer de schade</strong> grondig met foto's, zodat je schadeclaims kunt indienen.</li>
+                    <li><strong>Vermijd contact met besmet water</strong> en draag beschermende kleding bij het schoonmaken.</li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2024 DRUP. Alle rechten voorbehouden.</p>
+        <div class="footer-inhoud">
+            <div><p>Contact: <a href="mailto:bwk1a2po3@gmail.com">bwk1a2po3@gmail.com</a></p></div>
+            <div>
+            <p> <a class="active" class="pagina" href="{{ url_for('home') }}">Home</a>
+                <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen?</a>
+                <a class="pagina" href="{{ url_for('about') }}">About</a> </p>     
+            </div> 
+        </div>
+    </footer>
+</body>
+</html>

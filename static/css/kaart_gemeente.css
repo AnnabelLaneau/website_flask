@@ -1,0 +1,17 @@
+#grote_gemeentekaart {
+    height: 300px;
+    width: 500px;
+    padding-top: 20px;
+}
+
+.gemeente_info {
+    margin-top: 20px;
+    border: 5px solid;
+    border-color: var(--oranje);
+    background-color: var(--licht_blauw);
+}
+
+.inhoud_gemeente {
+    display: flex;
+    align-items: flex-start;
+}

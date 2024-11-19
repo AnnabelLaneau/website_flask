@@ -1,0 +1,27 @@
+.afbeelding-rechts {
+    float: right;
+    margin-left: 30Px;
+    width: 250px;
+    height: auto;
+}
+
+.voor {
+    background-color: var(--licht_blauw); 
+    border: 5px solid;
+    border-color: var(--oranje)}
+
+.tijdens {
+    background-color: var(--licht_blauw); 
+    border: 5px solid;
+    border-color: var(--oranje)
+}
+
+.na {
+    background-color: var(--licht_blauw); 
+    border: 5px solid;
+    border-color: var(--oranje)
+}
+
+.inhoud div {
+    margin-bottom: 10px;
+}

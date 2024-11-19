@@ -1,0 +1,67 @@
+.NavigationBar {
+    background-color: var(--donker_blauw); /* Achtergrondkleur van de navigatiebalk */
+    overflow: hidden;
+    display: flex; /* Flexbox gebruiken voor uitlijning */
+    justify-content: space-between; /* Elementen aan beide zijden uitlijnen */
+    padding: 0; /* Ruimte aan beide zijden */
+    align-items: center; /* Verticaal centreren binnen de navigatiebalk */
+    height: 75px; /* Hoogte van de navigatiebalk */
+    width: 100%;
+    top: 0;
+    border-bottom: 10px solid;
+    border-color: var(--oranje);
+}
+
+.navbar-brand img {
+    width: 70px; /* Breedte van het logo */
+    height: 40px; /* Hoogte van het logo */
+    transition: none;
+}
+.pagina:hover{  /* Kleur van de links veranderen bij hover */
+      background-color: var(--licht_blauw);
+      color: black;
+  }
+
+   /* Styling voor de links binnen de navigatiebalk */
+ .NavigationBar a {
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 25px;
+}
+
+/* Actieve link stijl */
+.NavigationBar a.active {
+    background-color: #2a0671;
+    color: white;
+}
+.paginas {
+   padding-right:40px;
+}
+
+/* Footer styling */
+.footer {
+    margin-top: 30px;
+    background-color: var(--donker_blauw);
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.footer a {
+    color: black 
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+.footer-inhoud {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
