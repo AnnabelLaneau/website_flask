@@ -2,12 +2,12 @@ import folium
 import csv
 import json
 import random
-from risicos_straten import risico
-def voeg_bolletje_toe_intern(kaart, latitude, longitude, straatnaam, kleur='black'):
+import risicos_straten
+def voeg_bolletje_toe_intern(kaart, latitude, longitude, straatnaam, kleur='black', straal=5):
     # Maak een CircleMarker (effen bolletje) met de gegeven coördinaten
     bolletje = folium.CircleMarker(
         location=[latitude, longitude],
-        radius=5,  # De grootte van het bolletje
+        radius=straal,  # De grootte van het bolletje
         color=kleur,  # De kleur van het bolletje
         fill=True,  # Vult het bolletje met kleur
         fill_color=kleur,  # De kleur van de vulling
@@ -20,7 +20,7 @@ def voeg_bolletje_toe_intern(kaart, latitude, longitude, straatnaam, kleur='blac
 
 def voeg_bolletje_toe(kaart,gemeente, geselecteerde_straat=None, neerslag_index=None):
     data = {}
-    csv_bestand = rf"C:\Users\annab\Documents\P&O 3\website_flask\coordinaten_straten\SAMENVOEG_{gemeente}.csv"
+    csv_bestand = rf"C:\Users\annab\Documents\P&O 3\website_flask\coordinaten_straten\s_coordinaten_{gemeente}.csv"
     with open(csv_bestand, mode="r") as csv_file:
         reader = csv.DictReader(csv_file)
         for row in reader:
@@ -35,30 +35,31 @@ def voeg_bolletje_toe(kaart,gemeente, geselecteerde_straat=None, neerslag_index=
     y = folium.FeatureGroup(name="Weinig risico")
     r = folium.FeatureGroup(name="Veel risico")
     # risicos toevoegen
-    data = risico(data, neerslag_index)
+    data = risicos_straten.risico(data, neerslag_index)
  
     # Voeg bolletjes toe aan de kaart
-    kleuren = ["green","yellow","red"]
     for straat,coords_risicos in data.items():
         coords = coords_risicos[0]
         risico = coords_risicos[1]
         if len(coords) == 2:
             if straat == geselecteerde_straat:
                 if risico > 2000: 
-                    kaart = r
+                    kaart_type = r
                 elif risico > 1000:
-                    kaart = y
+                    kaart_type = y
                 else: 
-                    kaart = g
-                voeg_bolletje_toe_intern(kaart, coords[0], coords[1], straat, kleur='rgb(19, 57, 128)')
+                    kaart_type = g
+                voeg_bolletje_toe_intern(kaart_type, coords[0], coords[1], straat, kleur='rgb(19, 57, 128)', straal = 10)
             else:
                 if risico > 2000: 
                     voeg_bolletje_toe_intern(g, coords[0], coords[1], straat, kleur='red')
                 elif risico > 1000:
                     voeg_bolletje_toe_intern(y, coords[0], coords[1], straat, kleur='yellow')
-                voeg_bolletje_toe_intern(r, coords[0], coords[1], straat, kleur='green')
+                else:
+                    voeg_bolletje_toe_intern(r, coords[0], coords[1], straat, kleur='green')
     # Opslaan van de kaart als een HTML-bestand
     g.add_to(kaart)
     y.add_to(kaart)
     r.add_to(kaart)
+    folium.LayerControl().add_to(kaart)
     return kaart

@@ -98,12 +98,12 @@ def home():
             ##KAARTJE MAKEN
             inhoud_upload_regen = os.listdir(upload_folder)
             uploaded_data = upload_folder + "/" + inhoud_upload_regen[0]
+            datums_neerslag.append(uploaded_data)
 
     if action == 'rainfall1':
             huidige_gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[0])
-            print(huidige_gemeenten_risicos)
-            session['current_risicos'] = huidige_gemeenten_risicos.to_dict('records')
             session['current_rainfall'] = 0
+            session.modified = True
             m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
             m = kaart_vlaanderen.add_rainfall_layer_h(m,datums_neerslag[0])  #KAN NIET IN EEN FEATURE GROEP WANT DAN WERKT HET NIET, naamgeving in de heatmap functie zelf (kaart_vlaanderen)
             gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=False, show=True)
@@ -120,7 +120,6 @@ def home():
 
     elif action == 'rainfall2':
             huidige_gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[1])
-            session['current_risicos'] = huidige_gemeenten_risicos.to_dict('records')
             session['current_rainfall'] = 1
             session.modified = True
             m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
@@ -138,8 +137,8 @@ def home():
             return iframe_html  # Stuur de iframe HTML terug voor de kaart
     elif action == 'rainfall3':
             huidige_gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[2])
-            session['current_risicos'] = huidige_gemeenten_risicos.to_dict('records')
             session['current_rainfall'] = 2
+            session.modified = True
             m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
             m = kaart_vlaanderen.add_rainfall_layer_h(m, datums_neerslag[2])  # KAN NIET IN EEN FEATURE GROEP WANT DAN WERKT HET NIET
             gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=False, show=True)
@@ -153,6 +152,9 @@ def home():
             print('inframe gemaakt')
             return iframe_html  # Stuur de iframe HTML terug voor de kaart
     elif action == 'rainfallupload': 
+            uploaded_data = datums_neerslag[3]
+            session['current_rainfall'] = 3
+            session.modified = True
             gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten, uploaded_data)
             m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
             m = kaart_vlaanderen.add_rainfall_layer_h(m, uploaded_data)  # KAN NIET IN EEN FEATURE GROEP WANT DAN WERKT HET NIET
@@ -170,16 +172,15 @@ def home():
     
     if action == 'select_gemeente':
             gekozen_gemeente = request.args.get('gemeente')
+            session['current_gemeente'] = gekozen_gemeente
             hele_lijst = kaart_vlaanderen.straten_per_gemeente()
             straten_lijst = hele_lijst[gekozen_gemeente]
             print(straten_lijst)
             print(f'Gekozen gemeente: {gekozen_gemeente}')
 
 
-            # Haal de risico data uit de session
-            current_risicos = None
-            if 'current_risicos' in session:
-                current_risicos = pd.DataFrame(session['current_risicos'])
+            neerslag_index = session['current_rainfall']
+            current_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[neerslag_index])
 
             m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
             if current_risicos is not None:
@@ -195,10 +196,18 @@ def home():
                 'lijst_van_straten': straten_lijst,
             })
     if action == 'select_straat':  
-         iframe_html = f'<iframe src="/gemeente/{gekozen_gemeente}" width="90%" height="100%"></iframe>'
-         return jsonify({
+        geselecteerde_straat = request.args.get('straat')
+        print('er is een straat gekozen')
+        # Get the gemeente name from the request parameters
+        gekozen_gemeente = session['current_gemeente']
+        print('gekozen gemeente', gekozen_gemeente)
+        if gekozen_gemeente:
+            iframe_html = f'<iframe src="/gemeente/{gekozen_gemeente}?straat={geselecteerde_straat}" width="90%" height="100%"></iframe>'
+            return jsonify({
                 'gemeente_html': iframe_html,
             })
+        else:
+            return jsonify({'error': 'No gemeente specified'})
 
     m.save(kaart_html_path)
     return render_template('home.html', title='Home', vlaanderen_gemeenten=gemeenten_lijst)
@@ -236,7 +245,6 @@ def gemeente(gemeente_naam):
         #neerslag nemen
         if 'current_rainfall' in session:
                 neerslag_index = session['current_rainfall']
-        print('neerslag index: ')
                 # Maak een Folium-kaart voor de geselecteerde gemeente
         m_gemeente = folium.Map(location=[gemeente_lat, gemeente_lon], tiles='OpenStreetMap')
         m_gemeente = voeg_bolletje_toe(m_gemeente,str(gemeente_naam), geselecteerde_straat, neerslag_index)
