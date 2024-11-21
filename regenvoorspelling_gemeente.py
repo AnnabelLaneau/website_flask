@@ -45,5 +45,3 @@ for gemeente, indices in sorted(gemeenten_data.items()):
 
 
 print(regen_per_gemeente)
-print(regen_per_gemeente["Hasselt"])
-print(regen_per_gemeente["Antwerpen"])

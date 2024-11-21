@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_866225120f3386015c27d875fd48a686 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_866225120f3386015c27d875fd48a686" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_866225120f3386015c27d875fd48a686 = L.map(
+                "map_866225120f3386015c27d875fd48a686",
+                {
+                    center: [50.759624584048815, 2.8975219697519745],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c0fedd845091cb067876c478cf6370ad = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_c0fedd845091cb067876c478cf6370ad.addTo(map_866225120f3386015c27d875fd48a686);
+        
+    
+            var feature_group_286025900fdf28d263837c18e6fe48d3 = L.featureGroup(
+                {}
+            );
+        
+    
+            var circle_marker_fb8b1bcfe9a5a31475f5a5fc6f900f63 = L.circleMarker(
+                [50.76482405165617, 2.8988670844876587],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_286025900fdf28d263837c18e6fe48d3);
+        
+    
+        var popup_02004c806a54faa8715d38ab733196c8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5ee764d0297707cca820442f6db68403 = $(`<div id="html_5ee764d0297707cca820442f6db68403" style="width: 100.0%; height: 100.0%;">François Deleustraat</div>`)[0];
+                popup_02004c806a54faa8715d38ab733196c8.setContent(html_5ee764d0297707cca820442f6db68403);
+            
+        
+
+        circle_marker_fb8b1bcfe9a5a31475f5a5fc6f900f63.bindPopup(popup_02004c806a54faa8715d38ab733196c8)
+        ;
+
+        
+    
+    
+            circle_marker_fb8b1bcfe9a5a31475f5a5fc6f900f63.bindTooltip(
+                `<div>
+                     François Deleustraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cfb7d9e520bee9732ac4304aaabe4141 = L.circleMarker(
+                [50.766054100000005, 2.8978514],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_286025900fdf28d263837c18e6fe48d3);
+        
+    
+        var popup_06d8645f0806fc68783badba024910e6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d925ae89e4074aa3fcb784a8c6369a5b = $(`<div id="html_d925ae89e4074aa3fcb784a8c6369a5b" style="width: 100.0%; height: 100.0%;">Ketelstraat</div>`)[0];
+                popup_06d8645f0806fc68783badba024910e6.setContent(html_d925ae89e4074aa3fcb784a8c6369a5b);
+            
+        
+
+        circle_marker_cfb7d9e520bee9732ac4304aaabe4141.bindPopup(popup_06d8645f0806fc68783badba024910e6)
+        ;
+
+        
+    
+    
+            circle_marker_cfb7d9e520bee9732ac4304aaabe4141.bindTooltip(
+                `<div>
+                     Ketelstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4167fa17ac67090df5b61d0978cd92f3 = L.circleMarker(
+                [50.764792312400694, 2.895140212052087],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_286025900fdf28d263837c18e6fe48d3);
+        
+    
+        var popup_f48ef858567c74c3cefd6c17d0f97337 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2a4a78856438e5e5e26cfa0781920647 = $(`<div id="html_2a4a78856438e5e5e26cfa0781920647" style="width: 100.0%; height: 100.0%;">Klaprozenwijk</div>`)[0];
+                popup_f48ef858567c74c3cefd6c17d0f97337.setContent(html_2a4a78856438e5e5e26cfa0781920647);
+            
+        
+
+        circle_marker_4167fa17ac67090df5b61d0978cd92f3.bindPopup(popup_f48ef858567c74c3cefd6c17d0f97337)
+        ;
+
+        
+    
+    
+            circle_marker_4167fa17ac67090df5b61d0978cd92f3.bindTooltip(
+                `<div>
+                     Klaprozenwijk
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e7cdcb5c0a917afdabc250d7d63770db = L.circleMarker(
+                [50.764444294218784, 2.898522599955534],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_286025900fdf28d263837c18e6fe48d3);
+        
+    
+        var popup_8b15fdb32402aff68eed2847bbe957a1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_94f81bd288ccb6a5fd8836eace54423a = $(`<div id="html_94f81bd288ccb6a5fd8836eace54423a" style="width: 100.0%; height: 100.0%;">Korte Mooiestraat</div>`)[0];
+                popup_8b15fdb32402aff68eed2847bbe957a1.setContent(html_94f81bd288ccb6a5fd8836eace54423a);
+            
+        
+
+        circle_marker_e7cdcb5c0a917afdabc250d7d63770db.bindPopup(popup_8b15fdb32402aff68eed2847bbe957a1)
+        ;
+
+        
+    
+    
+            circle_marker_e7cdcb5c0a917afdabc250d7d63770db.bindTooltip(
+                `<div>
+                     Korte Mooiestraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e51d7cdff810e28b22033b660508c4b9 = L.circleMarker(
+                [50.764659449999996, 2.895484489474388],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_286025900fdf28d263837c18e6fe48d3);
+        
+    
+        var popup_8cd9d4422b08b7714fe75e7c33dc9255 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e09831f0ce24e7d00449e326ae451bd4 = $(`<div id="html_e09831f0ce24e7d00449e326ae451bd4" style="width: 100.0%; height: 100.0%;">Maarschalk Plumerplein</div>`)[0];
+                popup_8cd9d4422b08b7714fe75e7c33dc9255.setContent(html_e09831f0ce24e7d00449e326ae451bd4);
+            
+        
+
+        circle_marker_e51d7cdff810e28b22033b660508c4b9.bindPopup(popup_8cd9d4422b08b7714fe75e7c33dc9255)
+        ;
+
+        
+    
+    
+            circle_marker_e51d7cdff810e28b22033b660508c4b9.bindTooltip(
+                `<div>
+                     Maarschalk Plumerplein
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f97ec160663fed6d33f1bd69048230aa = L.circleMarker(
+                [50.76601286587987, 2.9011280775682833],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_286025900fdf28d263837c18e6fe48d3);
+        
+    
+        var popup_9a28a59e4e6c6d2f80820f138954e4e6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f84aa0363bc87f3b5b888c985985ac11 = $(`<div id="html_f84aa0363bc87f3b5b888c985985ac11" style="width: 100.0%; height: 100.0%;">Vredestraat</div>`)[0];
+                popup_9a28a59e4e6c6d2f80820f138954e4e6.setContent(html_f84aa0363bc87f3b5b888c985985ac11);
+            
+        
+
+        circle_marker_f97ec160663fed6d33f1bd69048230aa.bindPopup(popup_9a28a59e4e6c6d2f80820f138954e4e6)
+        ;
+
+        
+    
+    
+            circle_marker_f97ec160663fed6d33f1bd69048230aa.bindTooltip(
+                `<div>
+                     Vredestraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d348670abc82ff057d299bb8e17a2508 = L.circleMarker(
+                [50.763453419734816, 2.894759738211744],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_286025900fdf28d263837c18e6fe48d3);
+        
+    
+        var popup_721fc1afd6e7fb94aeba9f7db19c0d64 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a3562b356c8685ec5f159cfaa0aec1c1 = $(`<div id="html_a3562b356c8685ec5f159cfaa0aec1c1" style="width: 100.0%; height: 100.0%;">Wulvergemstraat</div>`)[0];
+                popup_721fc1afd6e7fb94aeba9f7db19c0d64.setContent(html_a3562b356c8685ec5f159cfaa0aec1c1);
+            
+        
+
+        circle_marker_d348670abc82ff057d299bb8e17a2508.bindPopup(popup_721fc1afd6e7fb94aeba9f7db19c0d64)
+        ;
+
+        
+    
+    
+            circle_marker_d348670abc82ff057d299bb8e17a2508.bindTooltip(
+                `<div>
+                     Wulvergemstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_286025900fdf28d263837c18e6fe48d3.addTo(map_866225120f3386015c27d875fd48a686);
+        
+    
+            var feature_group_d7b53147e03ae712f2e7b7c362c7d64e = L.featureGroup(
+                {}
+            );
+        
+    
+            var circle_marker_241330e524879297a745855dbefb48b8 = L.circleMarker(
+                [50.7609366, 2.8957638],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_d7b53147e03ae712f2e7b7c362c7d64e);
+        
+    
+        var popup_f1d806243c9910e1bb7ef6d40dbe58c4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e738d55a41082469209ab18fcae4cb4e = $(`<div id="html_e738d55a41082469209ab18fcae4cb4e" style="width: 100.0%; height: 100.0%;">Armentierssteenweg</div>`)[0];
+                popup_f1d806243c9910e1bb7ef6d40dbe58c4.setContent(html_e738d55a41082469209ab18fcae4cb4e);
+            
+        
+
+        circle_marker_241330e524879297a745855dbefb48b8.bindPopup(popup_f1d806243c9910e1bb7ef6d40dbe58c4)
+        ;
+
+        
+    
+    
+            circle_marker_241330e524879297a745855dbefb48b8.bindTooltip(
+                `<div>
+                     Armentierssteenweg
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d59d0706e9300bdfb08cddf883f295a9 = L.circleMarker(
+                [50.76315767467347, 2.898223916522299],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_d7b53147e03ae712f2e7b7c362c7d64e);
+        
+    
+        var popup_c5eecdef8d0e7f7e9627ccf161325446 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3ad802b30b175cab76aa00bc23bb6095 = $(`<div id="html_3ad802b30b175cab76aa00bc23bb6095" style="width: 100.0%; height: 100.0%;">Daalstraat</div>`)[0];
+                popup_c5eecdef8d0e7f7e9627ccf161325446.setContent(html_3ad802b30b175cab76aa00bc23bb6095);
+            
+        
+
+        circle_marker_d59d0706e9300bdfb08cddf883f295a9.bindPopup(popup_c5eecdef8d0e7f7e9627ccf161325446)
+        ;
+
+        
+    
+    
+            circle_marker_d59d0706e9300bdfb08cddf883f295a9.bindTooltip(
+                `<div>
+                     Daalstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1e604d8236a94824c74b0ae65f878668 = L.circleMarker(
+                [50.76469002327061, 2.899429461126682],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_d7b53147e03ae712f2e7b7c362c7d64e);
+        
+    
+        var popup_521f9e46441212f98e102f301257fa04 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_63a1a9d0637c95d2f7da48d9b6fefcc4 = $(`<div id="html_63a1a9d0637c95d2f7da48d9b6fefcc4" style="width: 100.0%; height: 100.0%;">Oud Kerkhofstraat</div>`)[0];
+                popup_521f9e46441212f98e102f301257fa04.setContent(html_63a1a9d0637c95d2f7da48d9b6fefcc4);
+            
+        
+
+        circle_marker_1e604d8236a94824c74b0ae65f878668.bindPopup(popup_521f9e46441212f98e102f301257fa04)
+        ;
+
+        
+    
+    
+            circle_marker_1e604d8236a94824c74b0ae65f878668.bindTooltip(
+                `<div>
+                     Oud Kerkhofstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_17106e2b253faa3921a9c664381d90d5 = L.circleMarker(
+                [50.76634217411317, 2.899447755099361],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_d7b53147e03ae712f2e7b7c362c7d64e);
+        
+    
+        var popup_c9e07a814fda576b37e9b66c33d62385 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0d0d496c3bde8659e3ccab25f1e90c23 = $(`<div id="html_0d0d496c3bde8659e3ccab25f1e90c23" style="width: 100.0%; height: 100.0%;">Slijpstraat</div>`)[0];
+                popup_c9e07a814fda576b37e9b66c33d62385.setContent(html_0d0d496c3bde8659e3ccab25f1e90c23);
+            
+        
+
+        circle_marker_17106e2b253faa3921a9c664381d90d5.bindPopup(popup_c9e07a814fda576b37e9b66c33d62385)
+        ;
+
+        
+    
+    
+            circle_marker_17106e2b253faa3921a9c664381d90d5.bindTooltip(
+                `<div>
+                     Slijpstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cd5aa1bd26c39689501b1f58927eca4f = L.circleMarker(
+                [50.7668225263064, 2.8987111024317787],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_d7b53147e03ae712f2e7b7c362c7d64e);
+        
+    
+        var popup_ac9e4076bd0e996902c8508fda2ffd91 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_88a579ac0f10f7fef102829377524d3a = $(`<div id="html_88a579ac0f10f7fef102829377524d3a" style="width: 100.0%; height: 100.0%;">Steenstraat</div>`)[0];
+                popup_ac9e4076bd0e996902c8508fda2ffd91.setContent(html_88a579ac0f10f7fef102829377524d3a);
+            
+        
+
+        circle_marker_cd5aa1bd26c39689501b1f58927eca4f.bindPopup(popup_ac9e4076bd0e996902c8508fda2ffd91)
+        ;
+
+        
+    
+    
+            circle_marker_cd5aa1bd26c39689501b1f58927eca4f.bindTooltip(
+                `<div>
+                     Steenstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9c0745131a880c5116db6ba46f5fe6fc = L.circleMarker(
+                [50.76696355399793, 2.902148076302139],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_d7b53147e03ae712f2e7b7c362c7d64e);
+        
+    
+        var popup_a685c13950c274db5d34180802e0c830 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7edc97d043cbb481407a634dc2c7dcbb = $(`<div id="html_7edc97d043cbb481407a634dc2c7dcbb" style="width: 100.0%; height: 100.0%;">Vier Koningenstraat</div>`)[0];
+                popup_a685c13950c274db5d34180802e0c830.setContent(html_7edc97d043cbb481407a634dc2c7dcbb);
+            
+        
+
+        circle_marker_9c0745131a880c5116db6ba46f5fe6fc.bindPopup(popup_a685c13950c274db5d34180802e0c830)
+        ;
+
+        
+    
+    
+            circle_marker_9c0745131a880c5116db6ba46f5fe6fc.bindTooltip(
+                `<div>
+                     Vier Koningenstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_568ec4e614c2c084a17b4eaeaa3e50cc = L.circleMarker(
+                [50.764079249999995, 2.89814025],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_d7b53147e03ae712f2e7b7c362c7d64e);
+        
+    
+        var popup_4a628c3e8ca2e3eee268be08e1724439 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3042be81d5a9e6c8c8fef9d274468d66 = $(`<div id="html_3042be81d5a9e6c8c8fef9d274468d66" style="width: 100.0%; height: 100.0%;">Zwijnemarkt</div>`)[0];
+                popup_4a628c3e8ca2e3eee268be08e1724439.setContent(html_3042be81d5a9e6c8c8fef9d274468d66);
+            
+        
+
+        circle_marker_568ec4e614c2c084a17b4eaeaa3e50cc.bindPopup(popup_4a628c3e8ca2e3eee268be08e1724439)
+        ;
+
+        
+    
+    
+            circle_marker_568ec4e614c2c084a17b4eaeaa3e50cc.bindTooltip(
+                `<div>
+                     Zwijnemarkt
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_d7b53147e03ae712f2e7b7c362c7d64e.addTo(map_866225120f3386015c27d875fd48a686);
+        
+    
+            var feature_group_bee02a5c92e3fb9bdb69811567484f8f = L.featureGroup(
+                {}
+            );
+        
+    
+            var circle_marker_22a8c4ae20072262c88fa16d75119281 = L.circleMarker(
+                [50.76341189111484, 2.896480126903274],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_68b85bd06aaa107ccb3fe4fe40f91ea6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6538eabca21e1de5f4b585ea8fbce040 = $(`<div id="html_6538eabca21e1de5f4b585ea8fbce040" style="width: 100.0%; height: 100.0%;">Armentiersstraat</div>`)[0];
+                popup_68b85bd06aaa107ccb3fe4fe40f91ea6.setContent(html_6538eabca21e1de5f4b585ea8fbce040);
+            
+        
+
+        circle_marker_22a8c4ae20072262c88fa16d75119281.bindPopup(popup_68b85bd06aaa107ccb3fe4fe40f91ea6)
+        ;
+
+        
+    
+    
+            circle_marker_22a8c4ae20072262c88fa16d75119281.bindTooltip(
+                `<div>
+                     Armentiersstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_935cc340ccdec85854840c2c9dc8c604 = L.circleMarker(
+                [50.76430831435678, 2.897281777391277],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_ded940435a5e3cc49a3228c56116c728 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3d5e7c28adcca5c5b69edc33867d9463 = $(`<div id="html_3d5e7c28adcca5c5b69edc33867d9463" style="width: 100.0%; height: 100.0%;">Gentstraat</div>`)[0];
+                popup_ded940435a5e3cc49a3228c56116c728.setContent(html_3d5e7c28adcca5c5b69edc33867d9463);
+            
+        
+
+        circle_marker_935cc340ccdec85854840c2c9dc8c604.bindPopup(popup_ded940435a5e3cc49a3228c56116c728)
+        ;
+
+        
+    
+    
+            circle_marker_935cc340ccdec85854840c2c9dc8c604.bindTooltip(
+                `<div>
+                     Gentstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ce942e396ff689875d92652c8cb0fed6 = L.circleMarker(
+                [50.76635630383853, 2.8964934352388463],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_65ec3f7578bb6e21fb6391a2a8b37b3d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_35aec46e7a7758438b716f63a1ce3db2 = $(`<div id="html_35aec46e7a7758438b716f63a1ce3db2" style="width: 100.0%; height: 100.0%;">Ieperstraat</div>`)[0];
+                popup_65ec3f7578bb6e21fb6391a2a8b37b3d.setContent(html_35aec46e7a7758438b716f63a1ce3db2);
+            
+        
+
+        circle_marker_ce942e396ff689875d92652c8cb0fed6.bindPopup(popup_65ec3f7578bb6e21fb6391a2a8b37b3d)
+        ;
+
+        
+    
+    
+            circle_marker_ce942e396ff689875d92652c8cb0fed6.bindTooltip(
+                `<div>
+                     Ieperstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_446df33126e1a7db7b8f5088d91d7da3 = L.circleMarker(
+                [50.7640902, 2.89865835],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_b5f72411ee3595a8bd8f4921c721f71b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9a0477f2b3672488c6c864dc9ca62fbd = $(`<div id="html_9a0477f2b3672488c6c864dc9ca62fbd" style="width: 100.0%; height: 100.0%;">Kerkstraat</div>`)[0];
+                popup_b5f72411ee3595a8bd8f4921c721f71b.setContent(html_9a0477f2b3672488c6c864dc9ca62fbd);
+            
+        
+
+        circle_marker_446df33126e1a7db7b8f5088d91d7da3.bindPopup(popup_b5f72411ee3595a8bd8f4921c721f71b)
+        ;
+
+        
+    
+    
+            circle_marker_446df33126e1a7db7b8f5088d91d7da3.bindTooltip(
+                `<div>
+                     Kerkstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5e0d3169011f03c7730198e4debac46c = L.circleMarker(
+                [50.7650223, 2.8970331],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_823ee6482c63054622cc3543dcaeab42 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9cf41cab03b080dcaa2d5d1d90befd12 = $(`<div id="html_9cf41cab03b080dcaa2d5d1d90befd12" style="width: 100.0%; height: 100.0%;">Markt</div>`)[0];
+                popup_823ee6482c63054622cc3543dcaeab42.setContent(html_9cf41cab03b080dcaa2d5d1d90befd12);
+            
+        
+
+        circle_marker_5e0d3169011f03c7730198e4debac46c.bindPopup(popup_823ee6482c63054622cc3543dcaeab42)
+        ;
+
+        
+    
+    
+            circle_marker_5e0d3169011f03c7730198e4debac46c.bindTooltip(
+                `<div>
+                     Markt
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c25668063cbcc24bc1c624c715c450bd = L.circleMarker(
+                [50.7605776, 2.89043515],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_c612bbb8b83ab034c905c69b82e385c1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eaa7c34747210be8f38385ca45b84703 = $(`<div id="html_eaa7c34747210be8f38385ca45b84703" style="width: 100.0%; height: 100.0%;">Nieuw Zeelandersstraat</div>`)[0];
+                popup_c612bbb8b83ab034c905c69b82e385c1.setContent(html_eaa7c34747210be8f38385ca45b84703);
+            
+        
+
+        circle_marker_c25668063cbcc24bc1c624c715c450bd.bindPopup(popup_c612bbb8b83ab034c905c69b82e385c1)
+        ;
+
+        
+    
+    
+            circle_marker_c25668063cbcc24bc1c624c715c450bd.bindTooltip(
+                `<div>
+                     Nieuw Zeelandersstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_974d642ea1bdf6b8efb0a0accf9edc61 = L.circleMarker(
+                [50.7662030102776, 2.8953411780310523],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_0092d52ad0755427f03fad23db5d7c46 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_795c47efbb692bd8c0ba64c12051c159 = $(`<div id="html_795c47efbb692bd8c0ba64c12051c159" style="width: 100.0%; height: 100.0%;">Nieuwkerkestraat</div>`)[0];
+                popup_0092d52ad0755427f03fad23db5d7c46.setContent(html_795c47efbb692bd8c0ba64c12051c159);
+            
+        
+
+        circle_marker_974d642ea1bdf6b8efb0a0accf9edc61.bindPopup(popup_0092d52ad0755427f03fad23db5d7c46)
+        ;
+
+        
+    
+    
+            circle_marker_974d642ea1bdf6b8efb0a0accf9edc61.bindTooltip(
+                `<div>
+                     Nieuwkerkestraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ad63f863b8aec229a85058dce7d37e5e = L.circleMarker(
+                [50.764310781757956, 2.8996284154096594],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_ce95740210d4fd652329a6c4c0d5a144 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0541c0f2d9783cfcf9dab88baf403587 = $(`<div id="html_0541c0f2d9783cfcf9dab88baf403587" style="width: 100.0%; height: 100.0%;">Omtrek Kerk</div>`)[0];
+                popup_ce95740210d4fd652329a6c4c0d5a144.setContent(html_0541c0f2d9783cfcf9dab88baf403587);
+            
+        
+
+        circle_marker_ad63f863b8aec229a85058dce7d37e5e.bindPopup(popup_ce95740210d4fd652329a6c4c0d5a144)
+        ;
+
+        
+    
+    
+            circle_marker_ad63f863b8aec229a85058dce7d37e5e.bindTooltip(
+                `<div>
+                     Omtrek Kerk
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_64471667df8e8af0553d7b1165d5704f = L.circleMarker(
+                [50.76311546778164, 2.9038019843315053],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_e65b0d8d7f75a17b4f1c29c2072f4048 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_688d3bab628377ebc8c24b56a2f2568a = $(`<div id="html_688d3bab628377ebc8c24b56a2f2568a" style="width: 100.0%; height: 100.0%;">Rijselstraat</div>`)[0];
+                popup_e65b0d8d7f75a17b4f1c29c2072f4048.setContent(html_688d3bab628377ebc8c24b56a2f2568a);
+            
+        
+
+        circle_marker_64471667df8e8af0553d7b1165d5704f.bindPopup(popup_e65b0d8d7f75a17b4f1c29c2072f4048)
+        ;
+
+        
+    
+    
+            circle_marker_64471667df8e8af0553d7b1165d5704f.bindTooltip(
+                `<div>
+                     Rijselstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_fbf88da8b3ca7a8b7506eaa24d0f0e2c = L.circleMarker(
+                [50.7625250637947, 2.911446316138571],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": false, "weight": 3}
+            ).addTo(feature_group_bee02a5c92e3fb9bdb69811567484f8f);
+        
+    
+        var popup_9e33724d996a639b22174182ae0d5875 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5adcebb4e4be7dd0a7ac89dab4e12fdb = $(`<div id="html_5adcebb4e4be7dd0a7ac89dab4e12fdb" style="width: 100.0%; height: 100.0%;">Waastenstraat</div>`)[0];
+                popup_9e33724d996a639b22174182ae0d5875.setContent(html_5adcebb4e4be7dd0a7ac89dab4e12fdb);
+            
+        
+
+        circle_marker_fbf88da8b3ca7a8b7506eaa24d0f0e2c.bindPopup(popup_9e33724d996a639b22174182ae0d5875)
+        ;
+
+        
+    
+    
+            circle_marker_fbf88da8b3ca7a8b7506eaa24d0f0e2c.bindTooltip(
+                `<div>
+                     Waastenstraat
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_bee02a5c92e3fb9bdb69811567484f8f.addTo(map_866225120f3386015c27d875fd48a686);
+        
+    
+        function geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "none", "weight": 2};
+            }
+        }
+
+        function geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd = L.geoJson(null, {
+                onEachFeature: geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd_onEachFeature,
+            
+                style: geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd_styler,
+        });
+
+        function geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd_add (data) {
+            geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd
+                .addData(data);
+        }
+            geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd_add({"features": [{"geometry": {"coordinates": [[[[2.9006237343018055, 50.75418858220924], [2.8974452850904036, 50.75267558216376], [2.88829921914065, 50.75329793407192], [2.878219312759778, 50.76153773188047], [2.9003109205483795, 50.76695797459957], [2.9006115723406833, 50.76703170263813], [2.9188007057496517, 50.76396462363737], [2.9184353465062074, 50.76086062883388], [2.922545410157454, 50.75720557591544], [2.9006237343018055, 50.75418858220924]]], [[[2.8783124134766793, 50.7577110031439], [2.8777246322377548, 50.75429716366124], [2.8705130230566773, 50.75456704145297], [2.8696300717422267, 50.76003068171578], [2.875817898866245, 50.76116969182191], [2.8783124134766793, 50.7577110031439]]]], "type": "MultiPolygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_ec0dfe182e450bce89d5ad80ca2dbbdd.addTo(map_866225120f3386015c27d875fd48a686);
+        
+    
+            map_866225120f3386015c27d875fd48a686.fitBounds(
+                [[50.74767558216376, 2.864630071742227], [50.77203170263813, 2.927545410157454]],
+                {}
+            );
+        
+</script>
+</html>

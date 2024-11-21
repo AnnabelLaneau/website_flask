@@ -1,7 +1,8 @@
 #grote_gemeentekaart {
-    height: 300px;
-    width: 500px;
+    height: 400px;
+    width: 80%;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .gemeente_info {

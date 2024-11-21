@@ -5,6 +5,7 @@ import folium
 import os
 import kaart_vlaanderen
 import risicos_berekenen
+import risicos_straten
 import shutil
 import warnings # dit is om die reuzachtige error te onderdukken
 from bolletjes_gemeenteniveau import voeg_bolletje_toe
@@ -36,6 +37,9 @@ datums_neerslag = [paths_web[i] + r'\website_flask\HDF_DAGEN\hdf - 15jul',
  #_______________________________________________________________HOME__________________________________________________________________________________________________
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    if request.method == 'GET' and not request.args.get('action'):
+        session.pop('current_risicos', None)
+        session.pop('current_rainfall', None)
     #action = 'default' # er zit ergens een fout dat die na herladen die vorige actie toch nog blijft uitvoeren: MOET NOG GEFIXT WORDEN 
     action = request.args.get('action', 'default') #luistert naar acties van website
     gekozen_gemeente = request.args.get('gemeente', None)
@@ -69,11 +73,8 @@ def home():
     gemeenten_groep = folium.FeatureGroup(name="Gemeenten",overlay=True,control=True,show=False)
 
 
-    #if gekozen_gemeente:
-        #kaart_vlaanderen.highlight_selected_gemeente(m, vlaanderen_gemeenten, gekozen_gemeente)
-    #m.save(kaart_html_path)
-
     if request.method == 'POST':
+        # Controleer of er bestanden zijn geüpload
         # Controleer of er bestanden zijn geüpload
         if 'rainfile' in request.files:
             files = request.files.getlist('rainfile')  # Haal alle bestanden op als lijst
@@ -96,18 +97,16 @@ def home():
 
             ##KAARTJE MAKEN
             inhoud_upload_regen = os.listdir(upload_folder)
-            uploaded_data = upload_folder + "/" + inhoud_upload_regen[0]  #voor nu pakken we gwn de eerste in de lijst?
-            datums_neerslag.append(uploaded_data)
-
+            uploaded_data = upload_folder + "/" + inhoud_upload_regen[0]
 
     if action == 'rainfall1':
             huidige_gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[0])
-
+            print(huidige_gemeenten_risicos)
             session['current_risicos'] = huidige_gemeenten_risicos.to_dict('records')
-            session['current_rainfall'] = 1
+            session['current_rainfall'] = 0
             m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
             m = kaart_vlaanderen.add_rainfall_layer_h(m,datums_neerslag[0])  #KAN NIET IN EEN FEATURE GROEP WANT DAN WERKT HET NIET, naamgeving in de heatmap functie zelf (kaart_vlaanderen)
-            gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=True, show=True)
+            gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=False, show=True)
             gemeenten_groep2 = kaart_vlaanderen.add_gemeenten_layer(gemeenten_groep2, vlaanderen_gemeenten,0.3, huidige_gemeenten_risicos) #vervaging nodig om wolkjes te zien
             gemeenten_groep2.add_to(m)
             regen_groep = kaart_vlaanderen.add_rainfall_layer_d(regen_groep, datums_neerslag[0]) #dagelijkse neerslag
@@ -122,28 +121,30 @@ def home():
     elif action == 'rainfall2':
             huidige_gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[1])
             session['current_risicos'] = huidige_gemeenten_risicos.to_dict('records')
-            session['current_rainfall'] = 2
+            session['current_rainfall'] = 1
+            session.modified = True
             m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
             m = kaart_vlaanderen.add_rainfall_layer_h(m, datums_neerslag[1])  # KAN NIET IN EEN FEATURE GROEP WANT DAN WERKT HET NIET
-            gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=True, show=True)
+            gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=False, show=True)
             gemeenten_groep2 = kaart_vlaanderen.add_gemeenten_layer(gemeenten_groep2, vlaanderen_gemeenten,0.3, huidige_gemeenten_risicos)  # vervaging nodig om wolkjes te zien
             regen_groep = kaart_vlaanderen.add_rainfall_layer_d(regen_groep,datums_neerslag[1])
             regen_groep.add_to(m)
             gemeenten_groep2.add_to(m)
             folium.LayerControl().add_to(m)
             m.save(kaart_html_path)
+            print("Home route - setting session:", session['current_rainfall'])
             iframe_html = f'<iframe src="/static/kaarten/kaart_vlaanderen.html" width="100%" height="100%"></iframe >'
             print('inframe gemaakt')
             return iframe_html  # Stuur de iframe HTML terug voor de kaart
     elif action == 'rainfall3':
-            huidige_gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[3])
+            huidige_gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[2])
             session['current_risicos'] = huidige_gemeenten_risicos.to_dict('records')
-            session['current_rainfall'] = 3
+            session['current_rainfall'] = 2
             m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
-            m = kaart_vlaanderen.add_rainfall_layer_h(m, datums_neerslag[3])  # KAN NIET IN EEN FEATURE GROEP WANT DAN WERKT HET NIET
-            gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=True, show=True)
+            m = kaart_vlaanderen.add_rainfall_layer_h(m, datums_neerslag[2])  # KAN NIET IN EEN FEATURE GROEP WANT DAN WERKT HET NIET
+            gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=False, show=True)
             gemeenten_groep2 = kaart_vlaanderen.add_gemeenten_layer(gemeenten_groep2, vlaanderen_gemeenten,0.3, huidige_gemeenten_risicos)  # vervaging nodig om wolkjes te zien
-            regen_groep = kaart_vlaanderen.add_rainfall_layer_d(regen_groep, datums_neerslag[3])
+            regen_groep = kaart_vlaanderen.add_rainfall_layer_d(regen_groep, datums_neerslag[2])
             regen_groep.add_to(m)
             gemeenten_groep2.add_to(m)
             folium.LayerControl().add_to(m)
@@ -152,7 +153,20 @@ def home():
             print('inframe gemaakt')
             return iframe_html  # Stuur de iframe HTML terug voor de kaart
     elif action == 'rainfallupload': 
-         pass
+            gemeenten_risicos = risicos_berekenen.risico(vlaanderen_gemeenten, uploaded_data)
+            m = kaart_vlaanderen.init_map(vlaanderen_gemeenten)
+            m = kaart_vlaanderen.add_rainfall_layer_h(m, uploaded_data)  # KAN NIET IN EEN FEATURE GROEP WANT DAN WERKT HET NIET
+            gemeenten_groep2 = folium.FeatureGroup(name="Gemeenten", overlay=True, control=True, show=True)
+            gemeenten_groep2 = kaart_vlaanderen.add_gemeenten_layer(gemeenten_groep2, vlaanderen_gemeenten, 0.3,
+                                                                    gemeenten_risicos)  # vervaging nodig om wolkjes te zien
+            regen_groep = kaart_vlaanderen.add_rainfall_layer_d(regen_groep, uploaded_data)
+            regen_groep.add_to(m)
+            gemeenten_groep2.add_to(m)
+            folium.LayerControl().add_to(m)
+            m.save(kaart_html_path)
+            iframe_html = f'<iframe src="/static/kaarten/kaart_vlaanderen.html" width="100%" height="100%"></iframe >'
+            print('inframe gemaakt')
+            return iframe_html
     
     if action == 'select_gemeente':
             gekozen_gemeente = request.args.get('gemeente')
@@ -160,6 +174,7 @@ def home():
             straten_lijst = hele_lijst[gekozen_gemeente]
             print(straten_lijst)
             print(f'Gekozen gemeente: {gekozen_gemeente}')
+
 
             # Haal de risico data uit de session
             current_risicos = None
@@ -207,14 +222,24 @@ def gemeente(gemeente_naam):
     if not geselecteerde_gemeente.empty:
         # Haal de geometrie en coördinaten van de geselecteerde gemeente op
         gemeente_geo = geselecteerde_gemeente.geometry.values[0]
+
+        bounds = gemeente_geo.bounds  
+        bounds_with_padding = [
+            [bounds[1],bounds[0] ],
+            [bounds[3], bounds[2]]]
+        
         gemeente_centroid = gemeente_geo.centroid
         gemeente_lat = gemeente_centroid.y
         gemeente_lon = gemeente_centroid.x
-
-
+        print('Session contents:', session)
+        print(session['current_rainfall'])
+        #neerslag nemen
+        if 'current_rainfall' in session:
+                neerslag_index = session['current_rainfall']
+        print('neerslag index: ')
                 # Maak een Folium-kaart voor de geselecteerde gemeente
         m_gemeente = folium.Map(location=[gemeente_lat, gemeente_lon], tiles='OpenStreetMap')
-        m_gemeente = voeg_bolletje_toe(m_gemeente,str(gemeente_naam), geselecteerde_straat)
+        m_gemeente = voeg_bolletje_toe(m_gemeente,str(gemeente_naam), geselecteerde_straat, neerslag_index)
         folium.GeoJson(
             gemeente_geo,  # De geometrie van de gemeente
             style_function=lambda feature: {
@@ -223,6 +248,8 @@ def gemeente(gemeente_naam):
                 'fillColor': 'none',
             }
         ).add_to(m_gemeente)
+
+        m_gemeente.fit_bounds(bounds_with_padding)
 
         # Sla de gemeente kaart op
         gemeente_html_path = os.path.join('static','kaarten', f'kaart_{gemeente_naam}.html')
@@ -249,7 +276,7 @@ def maatregelingen():
     return render_template('maatregelingen.html', title='Maatregelingen')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
 # dit zorgt dat bestand runt 
 # debug=True: activeert de debug-modus, wat betekent dat de server automatisch opnieuw opstart als je wijzigingen aanbrengt in de code. 
 

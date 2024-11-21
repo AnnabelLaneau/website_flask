@@ -35,6 +35,8 @@ def init_map(vlaanderen_gemeenten):
                    control_scale=True,) # schaal vanonder aan kaart
     
     # Gemeentes toevoegen
+    gem = folium.FeatureGroup(name="Gemeenten2", control=False)
+    # Gemeentes toevoegen
     for _, row in vlaanderen_gemeenten.iterrows():
         geojson_geometry = row['geometry'].__geo_interface__
         folium.GeoJson(
@@ -42,8 +44,9 @@ def init_map(vlaanderen_gemeenten):
             style_function=lambda x,control=False: {
                 'color': 'black', 'weight': 1, 'opacity':1,
             },
-            popup=folium.Popup(f"Gemeente: {row['NAAM']}", max_width=300),
-        ).add_to(m)
+            popup=folium.Popup(f"Gemeente: {row['NAAM']}", max_width=300,show=False),
+        ).add_to(gem)
+    gem.add_to(m)
     m.fit_bounds(rand)
     m.options['maxBounds'] = rand # dit zorgt ervoor dat je niet buiten de rand kan pannen => !!!! zorgt wel ervoor dat kaart raar laadt (of iets anders want als dit er niet is nog steeds robleem)
     return m
@@ -60,9 +63,9 @@ def add_gemeenten_layer(m, vlaanderen_gemeenten, vervaging = 1, gemeenten_risico
             # met row['RISICO']: neem je de kolom van risico uit de rij
     for _, row in vlaanderen_gemeenten.iterrows():
         color = 'rgb(78, 146, 72)' #groen
-        if row['RISICO'] > 2000:
+        if row['RISICO'] > 0.1:
             color = 'rgb(210, 50, 47)' #rood
-        elif row['RISICO'] > 1000:
+        elif row['RISICO'] > 0.05:
             color = 'rgb(222, 104, 55)' #oranje
 
 
@@ -85,9 +88,9 @@ def highlight_selected_gemeente(m, vlaanderen_gemeenten, geselecteerde_gemeente,
     for _, row in vlaanderen_gemeenten.iterrows():
         if gemeenten_risicos is not None:
             color = 'rgb(78, 146, 72)' #groen
-            if row['RISICO'] > 2000:
+            if row['RISICO'] > 0.1:
                 color = 'rgb(210, 50, 47)' #rood
-            elif row['RISICO'] > 1000:
+            elif row['RISICO'] > 0.05:
                 color = 'rgb(222, 104, 55)' #oranje
         else:
             color = 'rgb(200, 200, 200)'  # neutral gray if no risk data
