@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlaanderen Overstromingsrisico/home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kaart_gemeente.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/algemeen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kaart_legende.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload_container.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    </style>
+</head>
+<body>
+    <nav class="NavigationBar">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='afbeeldingen/drup-logo.png') }}" alt="Logo">
+        </a>
+        <div class="paginas">
+            <a class="pagina" href="{{ url_for('home') }}">Home</a>
+            <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen? </a>
+            <a class="pagina" class="pagina" href="{{ url_for('about') }}">About</a>
+            <a class="pagina" id="maak_je_regen" href="{{ url_for('maak_je_regen') }}">Maak je regen</a>
+        </div>
+    </nav>
+    <div class='inhoud'>
+        <h1>Maak je eigen regen</h1>
+        <p> Vul de vaas en druk op start</p>
+        <button> START </button>
+    </div>
+    <footer class="footer">
+        <p>© 2024 DRUP. Alle rechten voorbehouden.</p>
+        <div class="footer-inhoud">
+            <div><p>Contact: <a href="mailto:bwk1a2po3@gmail.com">bwk1a2po3@gmail.com</a></p></div>
+            <div>
+            <p> <a class="pagina" class="pagina" href="{{ url_for('home') }}">Home</a>
+                <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen?</a>
+                <a class="pagina" href="{{ url_for('about') }}">About</a> 
+                <a class="pagina" href="{{ url_for('maak_je_regen') }}">Maak je regen</a></p>     
+            </div> 
+        </div>
+    </footer>
+</body>
+</html>

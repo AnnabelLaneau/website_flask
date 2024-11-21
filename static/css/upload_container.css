@@ -14,7 +14,6 @@
 .upload-container label {
     display: flex;
     justify-content: flex-start;
-    background-color: var(--licht_blauw);
     margin-bottom: 8px;
     margin-bottom: 0px;
 }

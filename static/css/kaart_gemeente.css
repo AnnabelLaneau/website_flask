@@ -16,3 +16,9 @@
     display: flex;
     align-items: flex-start;
 }
+
+.info2 {
+    width: 35%;
+    margin-right: 10px;
+    margin-left: 20px;
+}

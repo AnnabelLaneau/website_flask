@@ -20,7 +20,7 @@ def voeg_bolletje_toe_intern(kaart, latitude, longitude, straatnaam, kleur='blac
 
 def voeg_bolletje_toe(kaart,gemeente, geselecteerde_straat=None, neerslag_index=None):
     data = {}
-    csv_bestand = rf"C:\Users\annab\Documents\P&O 3\website_flask\coordinaten_straten\s_coordinaten_{gemeente}.csv"
+    csv_bestand = rf"C:\Users\annab\Documents\P&O 3\website_flask\coordinaten_straten\SAMENVOEG_{gemeente}.csv"
     with open(csv_bestand, mode="r") as csv_file:
         reader = csv.DictReader(csv_file)
         for row in reader:
@@ -61,5 +61,4 @@ def voeg_bolletje_toe(kaart,gemeente, geselecteerde_straat=None, neerslag_index=
     g.add_to(kaart)
     y.add_to(kaart)
     r.add_to(kaart)
-    folium.LayerControl().add_to(kaart)
     return kaart

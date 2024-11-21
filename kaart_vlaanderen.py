@@ -42,7 +42,7 @@ def init_map(vlaanderen_gemeenten):
         folium.GeoJson(
             geojson_geometry,
             style_function=lambda x,control=False: {
-                'color': 'black', 'weight': 1, 'opacity':1,
+                'color': 'rgb(19, 57, 128)', 'weight': 1, 'opacity':1,
             },
             popup=folium.Popup(f"Gemeente: {row['NAAM']}", max_width=300,show=False),
         ).add_to(gem)

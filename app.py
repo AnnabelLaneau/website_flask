@@ -178,7 +178,6 @@ def home():
             print(straten_lijst)
             print(f'Gekozen gemeente: {gekozen_gemeente}')
 
-
             neerslag_index = session['current_rainfall']
             current_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[neerslag_index])
 
@@ -190,21 +189,34 @@ def home():
             m.save(kaart_html_path)
             iframe_html = f'<iframe src="/gemeente/{gekozen_gemeente}" width="90%" height="100%"></iframe>'
             print(iframe_html)
+
+            neerslag_index = session['current_rainfall']
+            current_risicos = risicos_berekenen.risico(vlaanderen_gemeenten,datums_neerslag[neerslag_index])
+            
+            # Vind het risico voor deze gemeente
+            gemeente_risico = float(current_risicos[current_risicos['NAAM'] == gekozen_gemeente]['RISICO'].values[0])
+            
+
             return jsonify({
                 'kaart_vlaanderen_html': f'<iframe src="/static/kaarten/kaart_vlaanderen.html" width="100%" height="100%"></iframe >' ,
                 'gemeente_html': iframe_html,
                 'lijst_van_straten': straten_lijst,
+                'gemeente_risico': gemeente_risico
             })
     if action == 'select_straat':  
         geselecteerde_straat = request.args.get('straat')
-        print('er is een straat gekozen')
-        # Get the gemeente name from the request parameters
         gekozen_gemeente = session['current_gemeente']
-        print('gekozen gemeente', gekozen_gemeente)
+        print('gekozen gemeente:', gekozen_gemeente, 'en gekozen straat:', geselecteerde_straat)
+
+        straat_data = risicos_straten.risico({geselecteerde_straat: [[]]}, session['current_rainfall'])
+        print(straat_data)
+        straat_risico = straat_data[geselecteerde_straat][1]
         if gekozen_gemeente:
             iframe_html = f'<iframe src="/gemeente/{gekozen_gemeente}?straat={geselecteerde_straat}" width="90%" height="100%"></iframe>'
+
             return jsonify({
                 'gemeente_html': iframe_html,
+                'straat_risico': straat_risico
             })
         else:
             return jsonify({'error': 'No gemeente specified'})
@@ -282,6 +294,11 @@ def about():
 @app.route('/maatregelingen')  # Route voor de About Us-pagina
 def maatregelingen():
     return render_template('maatregelingen.html', title='Maatregelingen')
+
+#_________________________________________________________________________________MAAK JE REGEN______________
+@app.route('/maak_je_regen')
+def maak_je_regen():
+     return render_template('maak_je_regen.html', title='Maak je eigen regen')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

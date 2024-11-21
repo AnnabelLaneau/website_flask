@@ -17,12 +17,12 @@
         <a class="navbar-brand" href="{{ url_for('home') }}">
             <img src="{{ url_for('static', filename='afbeeldingen/drup-logo.png') }}" alt="Logo">
         </a>
-
         <!-- Navigatielinks -->
         <div class="paginas">
             <a class="active" class="pagina" href="{{ url_for('home') }}">Home</a>
             <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen?</a>
             <a class="pagina" href="{{ url_for('about') }}">About</a>
+            <a class="pagina" id="maak_je_regen" href="{{ url_for('maak_je_regen') }}">Maak je regen</a>
 
         </div>
     </nav>
@@ -86,6 +86,7 @@
         </div>
         <div class="gemeente_info gerond" >
             <h3 class="tekst">Gedetailleerde kaart</h3>
+            <p id="gemeente_risico_tekst" class="tekst"> </p>
             <div class="inhoud_gemeente tekst">
                 <div id="grote_gemeentekaart">
                     <p>Selecteer bovenaan een gemeente. </p>
@@ -110,6 +111,7 @@
                             <datalist id="straat-suggesties"></datalist>
                             <button onclick="ShowStraat()">Klik hier na kiezen.</button>
                         </div>
+                        <p id="straat_risico_tekst">Kom meer te weten over een risico van een bepaalde straat.</p>
                 </div>
             </div>
         </div>
@@ -122,7 +124,9 @@
             <div>
             <p> <a class="active" class="pagina" href="{{ url_for('home') }}">Home</a>
                 <a class="pagina" href="{{ url_for('maatregelingen') }}"> Wat doen?</a>
-                <a class="pagina" href="{{ url_for('about') }}">About</a> </p>     
+                <a class="pagina" href="{{ url_for('about') }}">About</a> 
+                <a class="pagina" href="{{ url_for('maak_je_regen') }}">Maak je regen</a>
+            </p>     
             </div> 
         </div>
     </footer>
@@ -144,6 +148,16 @@
                         document.getElementById('kaart').innerHTML = data.kaart_vlaanderen_html; // Update de kaart van Vlaanderen
                         document.getElementById('extra-info').innerHTML = data.gemeente_html;
                         document.getElementById('grote_gemeentekaart').innerHTML = data.gemeente_html;
+                        let risicoNiveau;
+                        if (data.gemeente_risico > 2000) {
+                            risicoNiveau = "hoog";
+                        } else if (data.gemeente_risico > 1000) {
+                            risicoNiveau = "gemiddeld"; 
+                        } else {
+                            risicoNiveau = "laag";
+                        }
+                        document.getElementById('gemeente_risico_tekst').innerHTML = 
+                            `<strong>${gemeente}</strong> heeft een ${risicoNiveau} risiconiveau met een specifieke waarde van ${data.gemeente_risico}.`;
                         straten_lijst = data.lijst_van_straten || [];
                         updateStraatSelect();
                     })
@@ -171,8 +185,21 @@
                 fetch(`/?action=select_straat&straat=${encodeURIComponent(straat)}`)
                     .then(response => response.json())
                     .then(data => {
+                        console.log('Received data:', data);
                         document.getElementById('grote_gemeentekaart').innerHTML= data.gemeente_html
-                        console.log(`Kaart geüpdatet voor straat: ${straat}`);
+                        let risicoNiveau;
+                        if (data.straat_risico > 2000) {
+                            risicoNiveau = "hoog";
+                        } else if (data.straat_risico > 1000) {
+                            risicoNiveau = "gemiddeld"; 
+                        } else {
+                            risicoNiveau = "laag";
+                        }
+               
+                        document.getElementById('straat_risico_tekst').innerHTML = 
+                            `<strong>${straat}</strong> heeft een ${risicoNiveau} risiconiveau met een specifieke waarde van ${data.straat_risico}.`;
+                                    console.log(`Kaart geüpdatet voor straat: ${straat}`);
+
                     })
                     .catch(error => console.error('Error:', error));}
                      else {
@@ -187,7 +214,7 @@
     
     // Toon loading animatie
     kaartDiv.innerHTML = `
-        <div class="loading-container" style="height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #AAC8E1; border-radius: 15px; overflow: hidden;">
+        <div class="loading-container" style="height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: rgb(170, 200, 225); border-radius: 15px; overflow: hidden;">
             <style>
                 .bars-container {
                     display: flex;
@@ -201,7 +228,7 @@
                 .bar {
                     width: 4px;
                     height: 40px;
-                    background-color: #133980;
+                    background-color: rgb(19, 57, 128);
                     animation: barMove 1.5s ease-in-out infinite;
                 }
 
